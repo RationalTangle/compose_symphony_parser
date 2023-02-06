@@ -159,7 +159,8 @@ def extract_weight_factor(parent_node_branch_state: NodeBranchState, node) -> fl
 
 
 def advance_branch_state(parent_node_branch_state: NodeBranchState, node) -> NodeBranchState:
-    current_node_branch_state = copy.deepcopy(parent_node_branch_state)
+    current_node_branch_state = NodeBranchState(
+        parent_node_branch_state.weight, parent_node_branch_state.branch_path_ids, parent_node_branch_state.parent_nodes)
 
     current_node_branch_state.parent_nodes.append(node)
 
