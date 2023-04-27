@@ -22,4 +22,4 @@ def get_symphony(symphony_id: str) -> dict:
 
 def extract_root_node_from_symphony_response(response: dict) -> dict:
     return typing.cast(dict, edn_syntax.convert_edn_to_pythonic(
-        edn_format.loads(response['fields']['latest_version_edn']['stringValue'])))
+        edn_format.loads(response['fields']['stringValue'])))
