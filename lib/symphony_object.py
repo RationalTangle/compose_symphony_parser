@@ -13,7 +13,7 @@ def get_symphony(symphony_id: str) -> dict:
     }
     print(f"Fetching symphony {symphony_id} from Composer")
     response = requests.get(
-        f'https://firestore.googleapis.com/v1/projects/{composerConfig["projectId"]}/databases/{composerConfig["databaseName"]}/documents/symphony/{symphony_id}')
+        f'https://firestore.googleapis.com/v1/projects/{composerConfig["projectId"]}/databases/{composerConfig["databaseName"]}/documents/copy_buffer/{symphony_id}')
     response.raise_for_status()
 
     response_json = response.json()
@@ -22,4 +22,4 @@ def get_symphony(symphony_id: str) -> dict:
 
 def extract_root_node_from_symphony_response(response: dict) -> dict:
     return typing.cast(dict, edn_syntax.convert_edn_to_pythonic(
-        edn_format.loads(response['fields']['stringValue'])))
+        edn_format.loads(response['fields']['latest_version_edn']['stringValue'])))
