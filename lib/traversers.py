@@ -254,7 +254,6 @@ def main():
 
     symphony_id = "RspMV6gSM7tX3x6yEseZ"
     symphony = symphony_object.get_symphony(symphony_id)
-    print(symphony)
     root_node = symphony_object.extract_root_node_from_symphony_response(
         symphony)
 
